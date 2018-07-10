@@ -7,7 +7,10 @@ RUN apk --no-cache --update add bash curl less groff jq python py-pip wget && \
   aws --version && \
   s3cmd --version
 
+RUN mkdir /app
+
   COPY config /root/.aws
   COPY credentials /root/.aws
+  COPY
 
-ENTRYPOINT []
+ENTRYPOINT [./app/update_r53.sh]
