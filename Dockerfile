@@ -9,8 +9,10 @@ RUN apk --no-cache --update add bash curl less groff jq python py-pip wget && \
 
 RUN mkdir /app
 
-  COPY config /root/.aws
-  COPY credentials /root/.aws
-  COPY
+COPY config /root/.aws
+COPY credentials /root/.aws
+COPY update_r53.sh /app
 
-ENTRYPOINT [./app/update_r53.sh]
+WORKDIR /app
+
+ENTRYPOINT ["sh","update_r53.sh"]
